@@ -9,16 +9,26 @@
   <body>
     <div class="container">
       <header class="header box">
-        <div class="logo">Studysync</div>
-        <div class="search">
-          <input type="text" placeholder="Search tasks...." />
+        <div class="left-header">
+          <div class="logo">Studysync</div>
+          <div class="divider"></div>
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search tasks...." />
+          </div>
         </div>
         <div class="right-header">
           <div class="date-time">
-            <span>29 July 2026</span>
-            <span>8:20 pm</span>
+            <div class="date">
+              <i class="fa-regular fa-calendar"></i>
+              <span>29 July 2026</span>
+            </div>
+            <div class="time">
+              <i class="fa-regular fa-clock"></i>
+              <span>8:20 pm</span>
+            </div>
           </div>
-          <button><i class="fa-solid fa-bell"></i></button>
+          <button><i class="fa-regular fa-bell"></i></button>
           <div class="profile">
             <img src="assets/image/profile.png" alt="profile picture" />
           </div>
@@ -47,6 +57,37 @@
         </nav>
       </aside>
       <main class="dashboard box">
+        <dialog id="taskDialog" class="task-dialog">
+          <form method="dialog" class="task-form">
+            <h3>Add New Task</h3>
+            <label>
+              Task name
+              <input type="text" id="taskName" required />
+            </label>
+            <label>
+              Priority
+              <select id="taskPriority">
+                <option value="High">High</option>
+                <option value="Medium" selected>Medium</option>
+                <option value="Low">Low</option>
+              </select>
+            </label>
+            <label>
+              Duration
+              <input
+                type="text"
+                id="taskDuration"
+                placeholder="e.g. 45 minutes"
+                required
+              />
+            </label>
+            <div class="dialog-actions">
+              <button type="button" id="cancelTask">Cancel</button>
+              <button type="submit" class="primary">Save Task</button>
+            </div>
+          </form>
+        </dialog>
+
         <section class="overview">
           <h2>Overview</h2>
           <div class="overview-header">
@@ -69,10 +110,71 @@
           </ul>
         </section>
         <section class="todays-task">
-          <h2>Today's Tasks</h2>
+          <div class="task-header">
+            <h2>Today's Tasks</h2>
+            <button class="addtask" id="addtaskbutton">
+              <i class="fa-solid fa-plus"></i> Add Task
+            </button>
+          </div>
+          <ul class="task-main" id="tasklist">
+            <li>
+              <div class="task-main-left">
+                <input type="checkbox" name="taskmain-1" id="" />
+                <span>CSS Grid Layout</span>
+              </div>
+              <div class="task-main-right">
+                <span>High</span>
+                <time datetime="PT45M">45 minutes</time>
+              </div>
+            </li>
+            <li>
+              <div class="task-main-left">
+                <input type="checkbox" name="taskmain-1" id="" />
+                <span>Javascript Arrays</span>
+              </div>
+              <div class="task-main-right">
+                <span>Medium</span>
+                <time datetime="PT30M">30 minutes</time>
+              </div>
+            </li>
+            <li>
+              <div class="task-main-left">
+                <input type="checkbox" name="taskmain-1" id="" />
+                <span>Git Practice</span>
+              </div>
+              <div class="task-main-right">
+                <span>Low</span>
+                <time datetime="PT20M">20 minutes</time>
+              </div>
+            </li>
+          </ul>
+          <div class="task-footer">
+            <span>5 tasks remaining</span>
+          </div>
         </section>
         <section class="pomodoro-timer">
-          <h2>Pomodoro Timer</h2>
+          <div class="timer-header">
+            <h2>Pomodoro Timer</h2>
+          </div>
+          <div class="main-timer">
+            <div class="timer-display">
+              <span
+                class="timer-chevron timer-chevron-down"
+                aria-label="Decrease timer"
+              >
+                <i class="fa-solid fa-chevron-down" id="decreaseButton"></i>
+              </span>
+              <span id="timer" class="timer">25:00</span>
+              <span
+                class="timer-chevron timer-chevron-up"
+                aria-label="Increase timer"
+              >
+                <i class="fa-solid fa-chevron-up" id="increaseButton"></i>
+              </span>
+            </div>
+            <button id="startButton">Start</button>
+            <button id="resetButton">Reset</button>
+          </div>
         </section>
         <section class="progress">
           <h2>Progress</h2>
@@ -86,5 +188,6 @@
       src="https://kit.fontawesome.com/f65cc94aa1.js"
       crossorigin="anonymous"
     ></script>
+    <script src="script.js"></script>
   </body>
 </html>
