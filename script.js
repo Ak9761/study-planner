@@ -6,9 +6,27 @@ const decreaseBtn = document.getElementById('decreaseButton');
 const addTaskBtn = document.getElementById('addtaskbutton');
 const taskdialog = document.getElementById('taskDialog');
 const taskList = document.getElementById('tasklist');
+const closeTaskDialogBtn = document.getElementById('cancelTask');
+const taskCount = document.getElementById('taskCount');
+let taskcheckboxes = document.querySelectorAll('.task-checkbox');
 
 let seconds = 25 * 60;
 let interval;
+
+function updateTaskCheckboxes() {
+  taskcheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', updateTaskListcount);
+  });
+}
+
+function updateTaskListcount() {
+  const unchecked = document.querySelectorAll(
+    '.task-main input[type="checkbox"]:not(:checked)'
+  ).length;
+
+  console.log(unchecked);
+  taskCount.textContent = `${unchecked} tasks remaining`;
+}
 
 function increaseTimer() {
   seconds += 5 * 60;
@@ -79,7 +97,7 @@ taskdialog.addEventListener('submit', (e) => {
 
   taskItem.innerHTML = `
     <div class="task-main-left">
-      <input type="checkbox" name="taskmain-1" id="" />
+      <input type="checkbox" class = "task-checkbox" name="taskmain-1" id="" />
       <span>${taskName}</span>
     </div>
     <div class="task-main-right">
@@ -89,5 +107,13 @@ taskdialog.addEventListener('submit', (e) => {
   `;
 
   taskList.appendChild(taskItem);
+  updateTaskListcount();
+  taskdialog.close();
+});
+
+updateTaskListcount();
+updateTaskCheckboxes();
+
+closeTaskDialogBtn.addEventListener('click', () => {
   taskdialog.close();
 });
