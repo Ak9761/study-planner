@@ -3,9 +3,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-/* body {
+body {
   height: 100vh;
-} */
+}
 .container {
   display: grid;
   min-height: 100vh;
@@ -78,10 +78,10 @@
 }
 main {
   display: grid;
-  gap: 20px;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, minmax(150px, auto));
+  gap: 20px;
   padding: 20px;
+  grid-auto-rows: minmax(150px, auto);
 }
 .quick-notes {
   grid-column: 1/-1;
@@ -327,4 +327,49 @@ aside nav ul li:hover {
   max-width: 100%;
   color: white;
   background: rgb(0, 85, 255);
+}
+.progress-summary {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: white;
+  border-radius: 15px;
+}
+.quick-notes {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  background: white;
+  border-radius: 15px;
+  gap: 10px;
+}
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+.notes-button {
+  border-radius: 10px;
+  border: none;
+  min-height: 30px;
+  min-width: 95px;
+  max-width: 105px;
+  color: white;
+  background: rgb(0, 85, 255);
+  cursor: pointer;
+}
+.notes-main {
+  display: flex;
+  flex-direction: column;
+  max-height: 150px;
+  overflow-y: auto;
+  gap: 5px;
+}
+.notes-main span {
+  border: 0.1px solid;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }

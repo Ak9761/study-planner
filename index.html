@@ -116,55 +116,9 @@
               <i class="fa-solid fa-plus"></i> Add Task
             </button>
           </div>
-          <ul class="task-main" id="tasklist">
-            <li>
-              <div class="task-main-left">
-                <input
-                  type="checkbox"
-                  name="taskmain-1"
-                  class="task-checkbox"
-                  id=""
-                />
-                <span>CSS Grid Layout</span>
-              </div>
-              <div class="task-main-right">
-                <span>High</span>
-                <time datetime="PT45M">45 minutes</time>
-              </div>
-            </li>
-            <li>
-              <div class="task-main-left">
-                <input
-                  type="checkbox"
-                  name="taskmain-1"
-                  class="task-checkbox"
-                  id=""
-                />
-                <span>Javascript Arrays</span>
-              </div>
-              <div class="task-main-right">
-                <span>Medium</span>
-                <time datetime="PT30M">30 minutes</time>
-              </div>
-            </li>
-            <li>
-              <div class="task-main-left">
-                <input
-                  type="checkbox"
-                  name="taskmain-1"
-                  class="task-checkbox"
-                  id=""
-                />
-                <span>Git Practice</span>
-              </div>
-              <div class="task-main-right">
-                <span>Low</span>
-                <time datetime="PT20M">20 minutes</time>
-              </div>
-            </li>
-          </ul>
+          <ul class="task-main" id="tasklist"></ul>
           <div class="task-footer">
-            <span id="taskCount">5 tasks remaining</span>
+            <span id="taskCount">0 tasks remaining</span>
           </div>
         </section>
         <section class="pomodoro-timer">
@@ -192,10 +146,37 @@
           </div>
         </section>
         <section class="progress">
-          <h2>Progress</h2>
+          <div class="progress-summary">
+            <h2>Progress</h2>
+            <span class="progress-value">72%</span>
+            <span class="progress-label">Overall Progress</span>
+
+            <div class="weekly-progress">
+              <canvas id="productivityChart"></canvas>
+            </div>
+          </div>
         </section>
         <section class="quick-notes">
-          <h2>Quick Notes</h2>
+          <dialog id="notesDialog" class="task-dialog">
+            <form method="dialog" class="task-form">
+              <h3>Add New Note</h3>
+              <label>
+                Note
+                <input type="text" id="notesName" required />
+              </label>
+              <div class="dialog-actions">
+                <button type="button" id="cancelNotes">Cancel</button>
+                <button type="submit" class="primary">Save Note</button>
+              </div>
+            </form>
+          </dialog>
+          <div class="notes-header">
+            <h2>Quick Notes</h2>
+            <button id="Addnotes" class="notes-button">
+              <i class="fa-solid fa-plus"></i> Add Notes
+            </button>
+          </div>
+          <div class="notes-main" id="noteslist"></div>
         </section>
       </main>
     </div>
@@ -203,6 +184,7 @@
       src="https://kit.fontawesome.com/f65cc94aa1.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
   </body>
 </html>
